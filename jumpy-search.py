@@ -12,13 +12,19 @@ def jump_search(arr, element):
     left, right = 0, 0
     while left < length and arr[left] <= element:
         right = min(length - 1, left + step)
+        # Break while loop if our elem is less than the next step elem
         if arr[left] <= element <= arr[right]:
             break
+        # if not than add step
         left += step
+
+    # if our elem does not exist in arr
     if left >= length or arr[left] > element:
-        return -1
+        return 'Item is not in arr'
     right = min(length - 1, right)
     i = left
+
+    # Simple linear search
     while i <= right and arr[i] <= element:
         if arr[i] == element:
             return i
